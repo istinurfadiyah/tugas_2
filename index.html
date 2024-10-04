@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desa Isti</title>
+    <link rel="stylesheet" href="assets/leaflet.css">
+    <script src="assets/leaflet.js"></script>
+    <script src="line pejanggik.geojson.js"></script>
+    <script src="art pejanggik.geojson.js"></script>
+    <style>
+        body,
+        html {
+            padding: 0px;
+            margin: 0px;
+            height: 100%;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+
+        const map = L.map('map').setView([-8.7111953, 116.3446173], 13);
+
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        var Pejanggik = L.geoJSON([Pejanggik], {
+            style: function (feature) {
+                return feature.properties && feature.properties.style;
+            }
+        }).addTo(map);
+        // menampilkan Sekolah pejanggik
+        var SDN_1_pejanggik = L.marker([]).bindPop.(map);
+
+        // menampilkan data marker kantor lurah/desa
+        var desa_pejanggik = L.marker([-8.754761, 116.334297415],13).addTo(map);
+        var stmiklombok = L. marker ([-8.6982443,116.2798417]).addTo(map);
+        function onMapClick(e){
+            alert("you cliced the map at" + e.latlng);
+        }
+        map.on('click', onMapClick);
+    </script>
+</body>
+
+</html>
